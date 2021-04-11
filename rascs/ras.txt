@@ -1,0 +1,16 @@
+Questão 1: 
+- Inserir nome todo
+- Imprimir nome todo
+- Ajustar media minima (n está funcionando)
+- Ajuste de tabelas
+
+
+// -> OK (b) Encontrar e imprimir os dados do aluno com maior nota da primeira prova. 
+// -> OK (c) Encontrar e imprimir os dados do aluno com maior media geral.
+// -> ERR (d) Encontrar e imprimir os dados do aluno com menor media geral.
+// -> OK (e) Para cada aluno diga se ele foi aprovado ou reprovado, considerando o valor 6 para aprovação. Apresente esta
+// informação na forma de uma tabela.
+
+
+
+Questão 2:
