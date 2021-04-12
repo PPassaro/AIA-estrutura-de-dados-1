@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include "prova_a1.h"
-#define QTD_STUDENTS 2
+#define QTD_STUDENTS 5
+#define QTD_TEAMS 3
 
 // Questão 1 //
 
 void populate_students (Student *students) {
   int i;
-  char name[100];
 
   for (i = 0; i < QTD_STUDENTS; i++) {
     printf ("\nDiga o código do Aluno %d: ", i+1);
@@ -40,14 +40,18 @@ void reports (Student *students) {
   }  
 
   for ( i = 0; i < QTD_STUDENTS; i++){
-    average = 0; 
     average = (info_students[i].grade1 + info_students[i].grade2 + info_students[i].grade3) / 3;
 
     if (average >= aux_highest) {
       aux_highest = average;
       highest_average = i;
     } 
-    if (average < aux_lowest) {
+
+    if ( i == 0){
+      aux_lowest = average;
+    }
+
+    if (average <= aux_lowest) {
       aux_lowest = average;
       lowest_average = i;
     }
@@ -80,11 +84,21 @@ void reports (Student *students) {
   }
 }
 
+// Questão 2 //
+
+
+
 
 int main () {
   Student info_students[QTD_STUDENTS];
   reports(info_students);
+
+  Team info_teams[QTD_TEAMS];
+  tournment(info_teams);
+
+
+
+  return 0;
 }
 
 
-// Questão 2 //
