@@ -13,6 +13,4 @@ int victories;
 int draws;
 int defeats;
 int goal_diff;
-int P;
-int points;
 } Team;
