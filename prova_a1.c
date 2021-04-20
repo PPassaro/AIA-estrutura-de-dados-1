@@ -2,8 +2,15 @@
 #include "prova_a1.h"
 #define QTD_STUDENTS 5
 #define QTD_TEAMS 3
+#define P 5
 
 // Questão 1 //
+void flush_in(){
+  int ch;
+  do{
+    ch = fgetc(stdin);
+  } while (ch != EOF && ch != '\n');
+}
 
 void populate_students (Student *students) {
   int i;
@@ -12,9 +19,11 @@ void populate_students (Student *students) {
     printf ("\nDiga o código do Aluno %d: ", i+1);
     scanf ("%li", &students[i].code);
 
+    flush_in();
     printf ("Diga o nome do Aluno %d: ", i+1);
-    scanf("%s", students[i].name);
-
+    scanf("%[A-Z a-z]", students[i].name);
+    flush_in();
+    
     printf ("Diga a primeira nota do Aluno %d: ", i+1);
     scanf ("%f", &students[i].grade1);
 
@@ -87,14 +96,18 @@ void reports (Student *students) {
 
 void populate_teams (Team *teams){
   int i;
+    
+  printf("\nDIGITE AS INFORMAÇÕES DE 3 TIMES COM O TOTAL DE 5 PARTIDAS. CASO DIGTE A MAIS, O PROGRAMA VOLTARÁ PARA O INICIO!\n");
 
   for (i = 0; i < QTD_TEAMS; i++) {
     printf ("\nDiga o código do Time %i: ", i+1);
     scanf ("%li", &teams[i].code);
 
+    flush_in();
     printf ("Diga o nome do Time %i: ", i+1);
-    scanf("%s", teams[i].name);
-
+    scanf("%[A-Z a-z]", teams[i].name);
+    flush_in();
+    
     printf ("Diga a quantidade de vitórias Time %i: ", i+1);
     scanf ("%i", &teams[i].victories);
 
@@ -110,26 +123,32 @@ void populate_teams (Team *teams){
 }
 
 int tournment (Team *teams){
-
   populate_teams(teams);
 
   int i = 0;
   int victory_team_index = 0;
   int teams_points[QTD_TEAMS];
+  int p_points;
   
   for (i = 0; i < QTD_TEAMS; i++) {
     int victories_points = teams[i].victories * 3;
     int draws_points = teams[i].draws * 1;
     int total_points = victories_points + draws_points;
     teams_points[i] = total_points;
+    int p_points = teams[i].victories + teams[i].draws + teams[i].defeats;
 
     if (total_points == teams_points[victory_team_index] && teams[i].goal_diff > teams[victory_team_index].goal_diff || total_points > teams_points[victory_team_index]){
       victory_team_index = i;
     }
-  }    
-  // printf("indice: %i\n", victory_team_index);
 
-return victory_team_index;
+    if(p_points > P){
+      populate_teams(teams);
+    }   
+  }   
+
+  // printf("\nIndice do time vitorioso (lembrando que o indice começa do 0): %i\n", victory_team_index);
+
+  return victory_team_index;
 }
 
 // Questão 3 //
@@ -164,7 +183,7 @@ int bin_search (int *v, int begin, int end, int value) {
     if (value < v[m]) end = m - 1; 
     else begin = m + 1;
   }
-  return 1;
+  return -1;
 
 }
 
@@ -175,6 +194,8 @@ int mult( int x, int n ){
     return x;
   return x + mult(x, n-1);
 }
+
+// MENU //
 
 void questao_1() {
    // Questão 1
