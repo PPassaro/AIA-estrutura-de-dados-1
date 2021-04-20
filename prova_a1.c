@@ -2,7 +2,7 @@
 #include "prova_a1.h"
 #define QTD_STUDENTS 5
 #define QTD_TEAMS 3
-#define P 5
+#define P 10
 
 // Questão 1 //
 void flush_in(){
@@ -14,6 +14,8 @@ void flush_in(){
 
 void populate_students (Student *students) {
   int i;
+
+  printf("\nDIGITE AS INFORMAÇÕES DE 5 ALUNOS!\n");
 
   for (i = 0; i < QTD_STUDENTS; i++) {
     printf ("\nDiga o código do Aluno %d: ", i+1);
@@ -66,19 +68,19 @@ void reports (Student *students) {
   }
 
   printf ("\nInfos do estudante com maior nota da primeira prova:\n" );
-  printf ("\ncod\tNome\t\tNota 1\tNota 2\tNota 3");
-  printf ("\n%li\t%s\t\t%.2f\t%.2f\t%.2f\n", students[highest_grade].code, students[highest_grade].name, students[highest_grade].grade1, students[highest_grade].grade2, students[highest_grade].grade3);
+  // printf ("\ncod\tNome\tNota 1\tNota 2\tNota 3");
+  printf ("\n%li\t%s\t\t\t%.2f\t%.2f\t%.2f\n", students[highest_grade].code, students[highest_grade].name, students[highest_grade].grade1, students[highest_grade].grade2, students[highest_grade].grade3);
 
   printf ("\nAluno com MAIOR média geral:\n" );
-  printf ("\ncod\tNome\t\tNota 1\tNota 2\tNota 3\tMédia");
-  printf ("\n%li\t%s\t\t%.2f\t%.2f\t%.2f\t%.2lf\n", students[highest_average].code, students[highest_average].name, students[highest_average].grade1, students[highest_average].grade2, students[highest_average].grade3, (double)aux_highest);
+  // printf ("\ncod\tNome\tNota 1\tNota 2\tNota 3\tMédia");
+  printf ("\n%li\t%s\t\t\t%.2f\t%.2f\t%.2f\t%.2lf\n", students[highest_average].code, students[highest_average].name, students[highest_average].grade1, students[highest_average].grade2, students[highest_average].grade3, (double)aux_highest);
 
   printf ("\nAluno com MENOR média geral:\n" );
-  printf ("\ncod\tNome\t\tNota 1\tNota 2\tNota 3\tMédia");
-  printf ("\n%li\t%s\t\t%.2f\t%.2f\t%.2f\t%.2lf\n", students[lowest_average].code, students[lowest_average].name, students[lowest_average].grade1, students[lowest_average].grade2, students[lowest_average].grade3, (double)aux_lowest);
+  // printf ("\ncod\tNome\ttNota 1\tNota 2\tNota 3\tMédia");
+  printf ("\n%li\t%s\t\t\t%.2f\t%.2f\t%.2f\t%.2lf\n", students[lowest_average].code, students[lowest_average].name, students[lowest_average].grade1, students[lowest_average].grade2, students[lowest_average].grade3, (double)aux_lowest);
 
   printf ("\nRelação de aprovação e reprovação dos alunos:\n" );
-  printf ("\nNome\t\t\tStatus");
+  // printf ("\nNome\t\t\t\t\tStatus");
 
   for (i = 0; i < QTD_STUDENTS; i++){
     average = 0; 
@@ -97,7 +99,7 @@ void reports (Student *students) {
 void populate_teams (Team *teams){
   int i;
     
-  printf("\nDIGITE AS INFORMAÇÕES DE 3 TIMES COM O TOTAL DE 5 PARTIDAS. CASO DIGTE A MAIS, O PROGRAMA VOLTARÁ PARA O INICIO!\n");
+  printf("\nDIGITE AS INFORMAÇÕES DE 3 TIMES COM O TOTAL DE 10 PARTIDAS. CASO DIGTE A MAIS, O PROGRAMA VOLTARÁ PARA O INICIO!\n");
 
   for (i = 0; i < QTD_TEAMS; i++) {
     printf ("\nDiga o código do Time %i: ", i+1);
@@ -146,7 +148,7 @@ int tournment (Team *teams){
     }   
   }   
 
-  // printf("\nIndice do time vitorioso (lembrando que o indice começa do 0): %i\n", victory_team_index);
+  printf("\nIndice do time vitorioso (lembrando que o indice começa do 0): %i\n", victory_team_index);
 
   return victory_team_index;
 }
@@ -220,21 +222,26 @@ void questao_3() {
 
   max_min(vetNumber, N, &max, &min);
 
-  printf("Max value: %i\n", max);
+  printf("\nArray usado {10, 20, 30, 40, 50}\n");
+  printf("\nMax value: %i\n", max);
   printf("Min value: %i\n", min);
 }
 
 void questao_4() {
   // Questão 4 
-  int vetNumber[5] = {10, 20, 30, 40, 50};
-  int index = bin_search(vetNumber, 0, 3, 100);
-  printf("Result: %i\n", index);
+  int vetNumber[60] = {1, 2, 3, 4, 5, 6};
+  int index = bin_search(vetNumber, 1, 6, 5);
+
+  printf("\nArray usado: {1, 2, 3, 4, 5, 6} (Lembrando que o index começa do 0)\n");
+  printf("\nResult: %i\n", index);
 }
 
 void questao_5() {
   // Questão 5
   int result = mult(3, 4);
-  printf ("Result: %i\n", result);
+
+  printf ("\nValores Usados: x = 3, n = 4\n");
+  printf ("\nResult: %i\n", result);
 }
 
 void menu () {
