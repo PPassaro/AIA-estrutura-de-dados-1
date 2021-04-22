@@ -178,16 +178,23 @@ void max_min (int *v, int N, int *max, int *min) {
 
 // Questão 4 //
 
-int bin_search (int *v, int begin, int end, int value) {
-  while (begin <= end) { 
-    int m = (begin + end)/2;
-    if (value == v[m]) return m;
-    if (value < v[m]) end = m - 1; 
-    else begin = m + 1;
-  }
-  return -1;
+int bin_search(int *v, int begin, int end, int value){
+  int i = (begin + end) / 2;
 
-}
+  if (begin > end) {  
+    return -1;
+  }
+
+  if (v[i] == value) {  
+    return i;
+  }
+
+  if (v[i] < value) {  
+    return bin_search(v, i + 1, end, value);
+  } else { 
+    return bin_search(v, begin, i - 1, value);
+  }
+} 
 
 // Questão 5 //
 
@@ -229,10 +236,10 @@ void questao_3() {
 
 void questao_4() {
   // Questão 4 
-  int vetNumber[60] = {1, 2, 3, 4, 5, 6};
-  int index = bin_search(vetNumber, 1, 6, 5);
+  int vetNumber[10] = {5,23,27,30,39,45,56,71,80,92};
+  int index = bin_search(vetNumber, 0, 9, 45);
 
-  printf("\nArray usado: {1, 2, 3, 4, 5, 6} (Lembrando que o index começa do 0)\n");
+  printf("\nArray usado: {5,23,27,30,39,45,56,71,80,92} - Valor procurado: 45\n(Lembrando que o index começa do 0)\n");
   printf("\nResult: %i\n", index);
 }
 
